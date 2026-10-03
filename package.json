@@ -1,6 +1,6 @@
 {
   "name": "echosage",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "private": true,
   "type": "module",
   "license": "MIT",
@@ -10,7 +10,7 @@
     "build:release": "node build.mjs --release",
     "watch": "node build.mjs --watch",
     "release": "node scripts/release.mjs",
-    "test": "node --test core/*.test.js",
+    "test": "node --test core/*.test.js tests/*.test.js",
     "check": "npm run build && npm test"
   },
   "devDependencies": {

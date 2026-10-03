@@ -26,7 +26,7 @@
 ## 快速开始
 
 ```sh
-git clone https://github.com/Fluxwang/CapSage.git
+git clone https://github.com/Fluxwang/EchoSage.git
 ```
 
 然后在 Chrome 里打开 `chrome://extensions`，开启「开发者模式」，选择「加载已解压的扩展程序」，指向克隆下来的仓库根目录。仓库已经包含构建产物，使用者不需要安装 Node 或运行构建命令。

@@ -189,7 +189,7 @@
   // background.js
   var OFFSCREEN_DOCUMENT_PATH = "/offscreen.html";
   var UPDATE_ALARM = "release-update-check";
-  var RELEASE_ENDPOINT = "https://api.github.com/repos/Fluxwang/CapSage/releases/latest";
+  var RELEASE_ENDPOINT = "https://api.github.com/repos/Fluxwang/EchoSage/releases/latest";
   var UPDATE_STORAGE = {
     releasedVersion: "updateReleasedVersion",
     releaseUrl: "updateReleaseUrl",

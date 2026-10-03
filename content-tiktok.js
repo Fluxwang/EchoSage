@@ -988,6 +988,7 @@ import { renderCaptionRows, renderRewriteOutput, renderSummaryList } from "./sid
     for (const item of event.data.items || []) remember(item);
     refresh();
   });
+  window.postMessage({ source: "echosage-tiktok-content", type: "ready" }, location.origin);
 
   // The toolbar button toggles the panel, so the user can bring it back after closing it.
   // popup 侧只有两个动作需要页内配合：读一次字幕、重扫当前视频。

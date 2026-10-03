@@ -1060,6 +1060,7 @@ ${caption.text}${translation}`;
       for (const item of event.data.items || []) remember(item);
       refresh();
     });
+    window.postMessage({ source: "echosage-tiktok-content", type: "ready" }, location.origin);
     function handleVideoCommand(command) {
       dismissed = false;
       if (command === "redetect") {

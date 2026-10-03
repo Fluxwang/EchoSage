@@ -9,7 +9,7 @@ function startWith(releasedVersion, runningVersion = "1.2.0") {
   return updateReducer(
     createUpdateState({
       releasedVersion,
-      releaseUrl: "https://github.com/Fluxwang/CapSage/releases/latest",
+      releaseUrl: "https://github.com/Fluxwang/EchoSage/releases/latest",
       lastCheckedAt: NOW,
     }),
     {
@@ -85,7 +85,7 @@ test("定时检查不会重复发请求，成功后持久化结果并重算角�
     type: "check-succeeded",
     now: NOW + 3,
     releasedVersion: "v1.3.0",
-    releaseUrl: "https://github.com/Fluxwang/CapSage/releases/tag/v1.3.0",
+    releaseUrl: "https://github.com/Fluxwang/EchoSage/releases/tag/v1.3.0",
   });
   assert.equal(succeeded.state.view.availableUpdate, true);
   assert.equal(succeeded.state.view.checkButton.label, "发现新版本");
@@ -93,7 +93,7 @@ test("定时检查不会重复发请求，成功后持久化结果并重算角�
     {
       type: "persist",
       releasedVersion: "v1.3.0",
-      releaseUrl: "https://github.com/Fluxwang/CapSage/releases/tag/v1.3.0",
+      releaseUrl: "https://github.com/Fluxwang/EchoSage/releases/tag/v1.3.0",
       lastCheckedAt: NOW + 3,
     },
     { type: "set-badge", text: "•" },
@@ -157,7 +157,7 @@ test("主动检查已是最新时给出明确回执", () => {
     type: "check-succeeded",
     now: NOW + 2,
     releasedVersion: "1.2.0",
-    releaseUrl: "https://github.com/Fluxwang/CapSage/releases/tag/v1.2.0",
+    releaseUrl: "https://github.com/Fluxwang/EchoSage/releases/tag/v1.2.0",
   });
 
   assert.equal(succeeded.state.view.message, "已是最新版本。");

@@ -23,7 +23,7 @@ import { createUpdateState, updateReducer } from "./core/update.js";
 
 const OFFSCREEN_DOCUMENT_PATH = "/offscreen.html";
 const UPDATE_ALARM = "release-update-check";
-const RELEASE_ENDPOINT = "https://api.github.com/repos/Fluxwang/CapSage/releases/latest";
+const RELEASE_ENDPOINT = "https://api.github.com/repos/Fluxwang/EchoSage/releases/latest";
 const UPDATE_STORAGE = {
   releasedVersion: "updateReleasedVersion",
   releaseUrl: "updateReleaseUrl",

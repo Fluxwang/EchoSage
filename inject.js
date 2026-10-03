@@ -7,6 +7,7 @@
   const API = /\/api\/(item|recommend|post|related|search|user|commerce|product|shop)\b/;
   const MAX_DEPTH = 9;
   const MAX_ITEMS = 60;
+  const cachedItems = new Map();
 
   function pick(item) {
     const video = item.video || {};
@@ -80,6 +81,11 @@
       try { data = JSON.parse(data); } catch { return; }
     }
     const items = collect(data, 0, []);
+    for (const item of items) {
+      cachedItems.delete(item.id);
+      cachedItems.set(item.id, item);
+      if (cachedItems.size > MAX_ITEMS) cachedItems.delete(cachedItems.keys().next().value);
+    }
     if (items.length) window.postMessage({ source: CHANNEL, items }, location.origin);
   }
 
@@ -108,6 +114,14 @@
     if (!node) return;
     try { publish(JSON.parse(node.textContent || "")); } catch { /* ignore */ }
   }
+
+  // document_idle can start after hydration or early API messages were delivered.
+  // Replay only after the isolated-world receiver has installed its listener.
+  window.addEventListener("message", event => {
+    if (event.source !== window || event.data?.source !== "echosage-tiktok-content" || event.data?.type !== "ready") return;
+    readHydration();
+    if (cachedItems.size) window.postMessage({ source: CHANNEL, items: [...cachedItems.values()] }, location.origin);
+  });
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", readHydration, { once: true });
   else readHydration();
